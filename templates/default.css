@@ -15,7 +15,7 @@ body.sidebar-collapsed .sidebar-toggle {
   left: 0;
 }
 
-body.sidebar-collapsed .sidebar-toggle svg {
+body.sidebar-collapsed #sidebar-toggle-left svg {
   transform: rotate(180deg);
 }
 
@@ -352,17 +352,25 @@ header {
 /* Sidebar  */
 .sidebar {
   position: fixed;
-  left: 0;
   top: 64px;
   width: 300px;
   height: calc(100vh - 64px);
   background-color: var(--sidebar-bg);
   padding: var(--space-6);
-  border-right: 1px solid var(--border-color);
   overflow-y: auto;
   z-index: 10;
   box-sizing: border-box;
   transition: transform var(--transition);
+}
+
+#sidebar-left {
+  left: 0;
+  border-right: 1px solid var(--border-color);
+}
+
+#sidebar-right {
+  right: 0;
+  border-left: 1px solid var(--border-color);
 }
 
 .sidebar-collapsed .sidebar,
@@ -373,21 +381,30 @@ header {
 /* Sidebar Toggle Button */
 .sidebar-toggle {
   position: fixed;
-  left: 300px;
   top: 50%;
   transform: translateY(-50%);
   width: 28px;
   height: 48px;
   background-color: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-left: none;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   cursor: pointer;
   z-index: 20;
-  transition: left var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#sidebar-toggle-left {
+  left: 300px;
+  border-left: none;
+  transition: left var(--transition);
+}
+
+#sidebar-toggle-right {
+  right: 300px;
+  border-right: none;
+  transition: right var(--transition);
 }
 
 .sidebar-toggle:hover {
@@ -401,14 +418,19 @@ header {
   transition: transform var(--transition);
 }
 
-.sidebar-collapsed .sidebar-toggle,
-.sidebar-collapsed-init .sidebar-toggle {
-  left: 0;
+.sidebar-collapsed #sidebar-toggle-left,
+.sidebar-collapsed-init #sidebar-toggle-left {
+  right: 0;
 }
 
-.sidebar-collapsed .sidebar-toggle svg,
-.sidebar-collapsed-init .sidebar-toggle svg {
+.sidebar-collapsed #sidebar-toggle-left svg,
+.sidebar-collapsed-init #sidebar-toggle-left svg {
   transform: rotate(180deg);
+}
+
+.sidebar-collapsed #sidebar-toggle-right,
+.sidebar-collapsed-init #sidebar-toggle-right {
+  right: 0;
 }
 
 .sidebar h2 {
@@ -423,9 +445,16 @@ header {
 }
 
 .sidebar ul {
-  padding-left: 0;
   list-style-type: none;
   margin: var(--space-3) 0;
+}
+
+#sidebar-left ul {
+  padding-left: 0;
+}
+
+#sidebar-right ul {
+  padding-right: 0;
 }
 
 .sidebar li {
@@ -1324,12 +1353,20 @@ h6:hover .copy-link {
 @media (max-width: 800px) {
   .sidebar {
     position: fixed;
-    left: 0;
     top: 60px;
     height: calc(100vh - 60px);
     z-index: 90;
     box-shadow: 2px 0 10px var(--shadow-color-darker);
+  }
+
+  #sidebar-left {
+    left: 0;
     transform: translateX(-100%);
+  }
+
+  #sidebar-right {
+    right: 0;
+    transform: translateX(100%);
   }
 
   body:not(.sidebar-collapsed) .sidebar {
@@ -1339,7 +1376,6 @@ h6:hover .copy-link {
   .sidebar-toggle {
     position: fixed;
     top: 70px;
-    left: 0;
     background-color: var(--header-bg);
     color: var(--header-text);
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
@@ -1351,12 +1387,24 @@ h6:hover .copy-link {
     justify-content: center;
   }
 
+  #sidebar-toggle-left {
+    left: 0;
+  }
+
+  #sidebar-toggle-right {
+    right: 0;
+  }
+
   .sidebar-toggle svg {
     fill: var(--header-text);
   }
 
-  body:not(.sidebar-collapsed) .sidebar-toggle {
+  body:not(.sidebar-collapsed) #sidebar-toggle-left {
     left: 300px;
+  }
+
+  body:not(.sidebar-collapsed) #sidebar-toggle-right {
+    right: 300px;
   }
 
   header {
@@ -1478,8 +1526,8 @@ h6:hover .copy-link {
 /* Options TOC styling */
 .toc-list {
   list-style-type: none;
-  padding-left: 0;
-  border-left: 2px solid var(--border-color);
+  padding-right: 0;
+  border-right: 2px solid var(--border-color);
   margin: var(--space-6) 0;
   transition: border-color var(--transition);
   background-color: var(--bg-surface);
@@ -1489,13 +1537,13 @@ h6:hover .copy-link {
 
 .toc-list ul {
   list-style-type: none;
-  padding-left: var(--space-4);
+  padding-right: var(--space-4);
   margin: var(--space-2) 0;
 }
 
 .toc-list li {
   margin-bottom: var(--space-2);
-  padding-left: var(--space-4);
+  padding-right: var(--space-4);
 }
 
 .toc-list a {
@@ -1553,7 +1601,7 @@ h6:hover .copy-link {
 .toc-list details summary::after {
   content: "▶";
   font-size: 0.7rem;
-  margin-left: var(--space-2);
+  margin-right: var(--space-2);
   flex-shrink: 0;
 }
 
@@ -1573,7 +1621,7 @@ h6:hover .copy-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: var(--space-2);
+  margin-right: var(--space-2);
   flex-shrink: 0;
 }
 
