@@ -51,14 +51,15 @@
             <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
           </svg>
         </div>
-        <nav class="sidebar">
+        <nav class="sidebar" id="sidebar-left">
           <div class="docs-nav">
             <h2>Documents</h2>
             <ul>
               {{ doc_nav|safe }}
             </ul>
           </div>
-
+        </nav>
+        <nav class="sidebar" id="sidebar-right">
           <div class="toc">
             <h2>Contents</h2>
             <ul class="toc-list">

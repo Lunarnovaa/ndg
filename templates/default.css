@@ -352,17 +352,25 @@ header {
 /* Sidebar  */
 .sidebar {
   position: fixed;
-  left: 0;
   top: 64px;
   width: 300px;
   height: calc(100vh - 64px);
   background-color: var(--sidebar-bg);
   padding: var(--space-6);
-  border-right: 1px solid var(--border-color);
   overflow-y: auto;
   z-index: 10;
   box-sizing: border-box;
   transition: transform var(--transition);
+}
+
+#sidebar-left {
+  left: 0;
+  border-right: 1px solid var(--border-color);
+}
+
+#sidebar-right {
+  right: 0;
+  border-left: 1px solid var(--border-color);
 }
 
 .sidebar-collapsed .sidebar,
@@ -423,9 +431,16 @@ header {
 }
 
 .sidebar ul {
-  padding-left: 0;
   list-style-type: none;
   margin: var(--space-3) 0;
+}
+
+#sidebar-left ul {
+  padding-left: 0;
+}
+
+#sidebar-right ul {
+  padding-right: 0;
 }
 
 .sidebar li {
@@ -1478,8 +1493,8 @@ h6:hover .copy-link {
 /* Options TOC styling */
 .toc-list {
   list-style-type: none;
-  padding-left: 0;
-  border-left: 2px solid var(--border-color);
+  padding-right: 0;
+  border-right: 2px solid var(--border-color);
   margin: var(--space-6) 0;
   transition: border-color var(--transition);
   background-color: var(--bg-surface);
@@ -1489,13 +1504,13 @@ h6:hover .copy-link {
 
 .toc-list ul {
   list-style-type: none;
-  padding-left: var(--space-4);
+  padding-right: var(--space-4);
   margin: var(--space-2) 0;
 }
 
 .toc-list li {
   margin-bottom: var(--space-2);
-  padding-left: var(--space-4);
+  padding-right: var(--space-4);
 }
 
 .toc-list a {
@@ -1553,7 +1568,7 @@ h6:hover .copy-link {
 .toc-list details summary::after {
   content: "▶";
   font-size: 0.7rem;
-  margin-left: var(--space-2);
+  margin-right: var(--space-2);
   flex-shrink: 0;
 }
 
@@ -1573,7 +1588,7 @@ h6:hover .copy-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: var(--space-2);
+  margin-right: var(--space-2);
   flex-shrink: 0;
 }
 
