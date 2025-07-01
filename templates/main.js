@@ -81,7 +81,7 @@ function createMobileElements() {
     ".mobile-sidebar-content",
   );
   if (desktopSidebars && mobileSidebarContent) {
-    mobileSidebarContent.innerHTML = desktopSidebars.innerHTML.join("");
+    mobileSidebarContent.innerHTML = desktopSidebars.join("").innerHTML;
   }
 }
 
